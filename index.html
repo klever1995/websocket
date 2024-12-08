@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <h1>WebSocket Hello World</h1>
+    <div id="message"></div>
+    
+    <script>
+        // Crear una conexión WebSocket al servidor
+        const socket = new WebSocket('ws://localhost:8080');
+
+        // Cuando se recibe un mensaje del servidor
+        socket.onmessage = (event) => {
+            document.getElementById('message').innerText = event.data;
+        };
+
+        // Cuando la conexión esté abierta
+        socket.onopen = () => {
+            socket.send('¡Hola servidor!');
+        };
+    </script>
+</body>
+</html>
