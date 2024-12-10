@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Client</title>
+    <title>WebSocket Cliente</title>
 </head>
 <body>
-    <h1>WebSocket Hello World</h1>
-    <div id="message"></div>
-    
-    <script>
-        // Crear una conexión WebSocket al servidor
-        const socket = new WebSocket('ws://localhost:8080');
+    <h1>Cliente WebSocket</h1>
+    <div id="message">Esperando mensajes...</div>
 
-        // Cuando se recibe un mensaje del servidor
-        socket.onmessage = (event) => {
-            document.getElementById('message').innerText = event.data;
+    <script>
+        const socket = new WebSocket('ws://127.0.0.1:8080');
+
+        socket.onopen = () => {
+            console.log('Conexión establecida');
+            socket.send('Hola, servidor!');
         };
 
-        // Cuando la conexión esté abierta
-        socket.onopen = () => {
-            socket.send('¡Hola servidor!');
+        socket.onmessage = event => {
+            document.getElementById('message').innerText = `Mensaje del servidor: ${event.data}`;
+        };
+
+        socket.onclose = () => {
+            console.log('Conexión cerrada');
+        };
+
+        socket.onerror = error => {
+            console.error('Error:', error);
         };
     </script>
 </body>
