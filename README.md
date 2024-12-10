@@ -6,11 +6,16 @@ A simple WebSocket server using Node.js, dockerized for easy execution in any en
 
 This is a basic WebSocket server implemented with Node.js. The server listens for WebSocket connections on port 8080 and sends a "Hello, World!" message to all connected clients. It also logs messages received from clients.
 
+### Changes:
+- Now, the server serves an `index.html` file for easy WebSocket client testing through a browser.
+- WebSocket connection is established at `ws://localhost:8080`.
+
 ## Technologies Used
 
 - Node.js
 - WebSocket (ws library)
 - Docker
+- HTML (for testing via browser)
 
 ## Prerequisites
 
@@ -56,8 +61,8 @@ You can use a WebSocket client to test the connection. For example, use a WebSoc
 
 6. **Test the connection:**
 
-- **When a client connects**, it will receive the message `"Hello, World!"`.
-- **If the client sends a message back to the server**, the server will log that message to the console.
+-**When a client connects,** it will receive the message "Hello, World!".
+-**If the client sends a message back to the server,** the server will log that message to the console
 
 ### Example of WebSocket Communication:
 
